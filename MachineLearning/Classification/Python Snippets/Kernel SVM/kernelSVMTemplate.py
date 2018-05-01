@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue May  1 14:00:57 2018
+Created on Tue May  1 21:11:50 2018
 
 @author: Harry
 """
 
-#Support Vector Machine (SVM)
+#Kernel SVM
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -29,9 +30,9 @@ sc_X = StandardScaler()
 X_train = sc_X.fit_transform(X_train)
 X_test = sc_X.transform(X_test)
 
-#Fiting classifier to the Training set
+#Fitting classifier to the Training set
 from sklearn.svm import SVC
-classifier = SVC(kernel = 'linear', random_state = 0)
+classifier = SVC(kernel = 'rbf', random_state = 0)
 classifier.fit(X_train,y_train)
 
 #Predicting the Test set results
@@ -86,6 +87,5 @@ for i, j in enumerate(np.unique(y_set)):
 plt.title('SVM (Test set)')
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
-plt.legend()
+plt.legend() 
 plt.show()
-
