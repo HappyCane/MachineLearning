@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Apr 29 11:02:10 2018
+Created on Tue May  1 14:00:57 2018
 
 @author: Harry
 """
 
-#Logistic Regression
-
+#Support Vector Machine (SVM)
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -31,8 +30,8 @@ X_train = sc_X.fit_transform(X_train)
 X_test = sc_X.transform(X_test)
 
 #Fitting Logistic Regression to the Training set
-from sklearn.linear_model import LogisticRegression
-classifier = LogisticRegression(random_state=0)
+from sklearn.svm import SVC
+classifier = SVC(kernel = 'linear', random_state = 0)
 classifier.fit(X_train,y_train)
 
 #Predicting the Test set results
@@ -60,7 +59,7 @@ for i, j in enumerate(np.unique(y_set)):
     plt.scatter(X_set[y_set == j,0], X_set[y_set == j, 1],
                 c = ListedColormap(('red','green'))(i), label = j)
 
-plt.title('Logistic Regression (Train set)')
+plt.title('SVM (Train set)')
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
 plt.legend()
@@ -84,8 +83,9 @@ for i, j in enumerate(np.unique(y_set)):
     plt.scatter(X_set[y_set == j,0], X_set[y_set == j, 1],
                 c = ListedColormap(('red','green'))(i), label = j)
 
-plt.title('Logistic Regression (Test set)')
+plt.title('SVM (Test set)')
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
 plt.legend()
 plt.show()
+
